@@ -53,7 +53,7 @@ def draw_circle(rgb_canvas, trials=1):
         return draw_circle(rgb_canvas, trials=trials + 1)
 
     colors = [[255, 0, 0], [0, 255, 0], [0, 0, 255]]
-    color = list(colors[np.random.randint(0, 3)])
+    color = colors[np.random.randint(0, 3)]
 
     x1, y1, x2, y2 = map(
         int, convert_box([x, y, 2 * radius, 2 * radius], out_format='x1y1x2y2'))
@@ -98,7 +98,7 @@ def draw_rectangle(rgb_canvas, trials=0):
         return draw_rectangle(rgb_canvas, trials=trials + 1)
 
     colors = [[255, 0, 0], [0, 255, 0], [0, 0, 255]]
-    color = list(colors[np.random.randint(0, 3)])
+    color = colors[np.random.randint(0, 3)]
 
     return cv2.rectangle(rgb_canvas,
                          pt1=(x1, y1),
