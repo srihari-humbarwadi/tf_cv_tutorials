@@ -3,7 +3,7 @@ import os
 
 import cv2
 import numpy as np
-from tqdm.notebook import tqdm
+from tqdm import tqdm
 
 from skimage.io import imsave
 
