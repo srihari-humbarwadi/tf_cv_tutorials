@@ -8,35 +8,6 @@ from tqdm import tqdm
 from skimage.io import imsave
 
 
-def draw_boxes_cv2(image, boxes, categories):
-    boxes = np.array(boxes, dtype=np.int32)
-    for _box, _cls in zip(boxes, categories):
-        text = _cls
-        char_len = len(text) * 9
-        text_orig = (_box[0] + 5, _box[1] - 6)
-        text_bg_xy1 = (_box[0], _box[1] - 20)
-        text_bg_xy2 = (_box[0] + char_len, _box[1])
-        image = cv2.rectangle(image, text_bg_xy1, text_bg_xy2, [255, 252, 150],
-                              -1)
-        image = cv2.putText(image,
-                            text,
-                            text_orig,
-                            cv2.FONT_HERSHEY_COMPLEX_SMALL,
-                            .6, [0, 0, 0],
-                            5,
-                            lineType=cv2.LINE_AA)
-        img = cv2.putText(image,
-                          text,
-                          text_orig,
-                          cv2.FONT_HERSHEY_COMPLEX_SMALL,
-                          .6, [255, 255, 255],
-                          1,
-                          lineType=cv2.LINE_AA)
-        img = cv2.rectangle(image, (_box[0], _box[1]), (_box[2], _box[3]),
-                            [30, 15, 30], 1)
-    return img
-
-
 def convert_box(box, out_format):
     assert out_format in ['xywh', 'x1y1x2y2'], 'Invalid box format'
 
